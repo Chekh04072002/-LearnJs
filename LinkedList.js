@@ -52,9 +52,48 @@ class LinkedList {
             current = current.next;
         }
     }
+    insertAfter(data, after) {
+        const found = this.find(after);
+        if (!found) {
+            return ;
+        }
+        const node = new Node(data, found.next);
+        found.next = node;
+    }
+
+    remove(data) {
+        if (!this.head) {
+            return ;
+        }
+
+        while (this.head && this.head.data === data) {
+            this.head = this.head.next;
+        }
+
+        let current = this.head;
+        while (current.next) {
+            if (current.next.data === data) {
+                current.next = current.next.next;
+            }
+            else {
+                current = current.next;
+            }
+        }
+        if (this.tail.data === data) {
+            this.tail = current;
+        }
+
+    }
 }
 
 const list = new LinkedList();
-list.append(5);
-list.prepend(6);
+list.prepend('first');
+list.append('second');
+list.append('4th');
+list.insertAfter('third', 'second');
+console.log(list.toArray());
+list.append(1);
+list.append(1);
+console.log(list.toArray());
+list.remove(1);
 console.log(list.toArray());
