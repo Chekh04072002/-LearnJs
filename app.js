@@ -718,8 +718,20 @@
 
 
 
+let learn = {
+    learn() {
+        console.log('learning');
+    }
+}
 
+let obj = {
+    name: 'Sasha',
+    sName: 'Chekh',
+    ...learn
+};
 
-
-
+let a = {
+    ...obj
+}
+console.log(a)
 
