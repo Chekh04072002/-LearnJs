@@ -716,22 +716,96 @@
 // console.log(q)
 
 
+// class Coder {
+//     constructor(name) {
+//         this.name = name;
+//         this.lang = 'js';
+//     }
+// }
+//
+// function getCode() {
+//     return {
+//         code() {
+//             console.log(`coding on ${this.lang}`);
+//         }
+//     }
+// }
+//
+// function createCoderWithCode(name) {
+//     let coder = new Coder(name);
+//     return {
+//         ...coder,
+//         ...getCode()
+//     }
+// }
+//
+// let coder = createCoderWithCode('Max');
+// console.log(coder.code())
+
+///////////////////////////////
+// let prom = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve('ok'), 2000);
+// })
+//
+// async function foo() {
+//     let response = await prom;
+//     console.log(response)
+// }
+//
+// foo();
+
+// const fs = require('fs');
+// console.time('one');
+// let prom = new Promise((resolve, reject) => {
+//     fs.readFile('text.txt', 'utf8', (error, data) => {
+//         resolve(data[1000]);
+//     })
+// })
+//     .then(data => {
+//         console.log(data)
+//         console.log('zaversheno')
+//     })
+//
+// console.timeEnd('one');
 
 
-let learn = {
-    learn() {
-        console.log('learning');
+// let readline = require('readline');
+// let rl = readline.createInterface(process.stdin, process.stdout);
+// rl.question('input text ', text => {
+//     console.log(`text is ${text}`);
+//     rl.close();
+// })
+
+
+const test = {
+    name: 'test object',
+    createAnonFunction: function() {
+        return function() {
+            console.log(this.name);
+            console.log(arguments);
+        };
+    },
+
+    createArrowFunction: function() {
+        return () => {
+            console.log(this.name);
+            console.log(arguments);
+        };
+    }
+};
+
+// console.log(test.createAnonFunction('hello')())
+// console.log('///////////////////')
+// console.log(test.createArrowFunction('hello')())
+
+
+let obj = {
+    name: 'qwerty',
+    getName() {
+        return function() {
+            return this.name;
+        }
     }
 }
 
-let obj = {
-    name: 'Sasha',
-    sName: 'Chekh',
-    ...learn
-};
-
-let a = {
-    ...obj
-}
-console.log(a)
-
+console.log(obj.getName()());
